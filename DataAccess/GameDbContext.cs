@@ -12,7 +12,7 @@ namespace DataAccess
         }
         public virtual DbSet<DbPredictedGame> PredictedGame { get; set; }
         public virtual DbSet<DbGame> Game { get; set; }
-        public virtual DbSet<DbGameLogLosses> GameLogLoss { get; set; }
+        public virtual DbSet<DbLogLossGame> LogLossGame { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

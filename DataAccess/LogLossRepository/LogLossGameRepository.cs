@@ -11,14 +11,14 @@ namespace DataAccess.LogLossRepository
             _dbContext = dbContext;
         }
 
-        public async Task AddLogLossGames(IEnumerable<DbGameLogLosses> games)
+        public async Task AddLogLossGames(IEnumerable<DbLogLossGame> games)
         {
-            await _dbContext.GameLogLoss.AddRangeAsync(games);
+            await _dbContext.LogLossGame.AddRangeAsync(games);
             await _dbContext.SaveChangesAsync();
         }
         public async Task<bool> DoesLogLossExistById(int id)
         {
-            var game = await _dbContext.GameLogLoss.FirstOrDefaultAsync(i => i.id == id);
+            var game = await _dbContext.LogLossGame.FirstOrDefaultAsync(i => i.id == id);
             if (game == null)
                 return false;
             return true;

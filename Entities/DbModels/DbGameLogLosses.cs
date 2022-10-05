@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Entities.DbModels
 {
-    public class DbGameLogLosses
+    public class DbLogLossGame
     {
         public int id { get; set; }
         public double bovadaLogLoss { get; set; }
@@ -12,4 +12,3 @@ namespace Entities.DbModels
         public double modelLogLoss { get; set; }
     }
 }
-
