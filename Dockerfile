@@ -13,6 +13,6 @@ ENV DOTNET_RUNNING_IN_CONTAINER=true
 RUN apk add --no-cache icu-libs
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 RUN addgroup -S loglossgroup && adduser -S loglossuser 
-USER datauser 
+USER loglossuser
 COPY --from=build-env --chown=loglossuser:loglossgroup /logloss/deploy/nhl-logloss-getter .
 ENTRYPOINT ["./nhl-logloss-getter"]
