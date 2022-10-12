@@ -17,12 +17,12 @@ namespace LogLoss
                 return -1;
             return -(((int)winner) * Math.Log(awayOdds) + (1 - ((int)winner)) * Math.Log(1 - homeOdds));
         }
-		public async Task<IEnumerable<DbLogLossGame>> Calculate(IEnumerable<DbPredictedGame> games)
+		public IEnumerable<DbLogLossGame> Calculate(IEnumerable<DbPredictedGame> games)
 		{
             var logLosses = new List<DbLogLossGame>();
             foreach(var game in games)
             {
-                if (await _logLossGameRepository.DoesLogLossExistById(game.id) && game.game.hasBeenPlayed == true)
+                if (_logLossGameRepository.DoesLogLossExistById(game.id) && game.game.hasBeenPlayed == true)
                     continue;
                 var logLoss = new DbLogLossGame()
                 {
