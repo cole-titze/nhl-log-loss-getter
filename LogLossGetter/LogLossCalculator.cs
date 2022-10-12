@@ -22,7 +22,7 @@ namespace LogLoss
             var logLosses = new List<DbLogLossGame>();
             foreach(var game in games)
             {
-                if (await _logLossGameRepository.DoesLogLossExistById(game.id))
+                if (await _logLossGameRepository.DoesLogLossExistById(game.id) && game.game.hasBeenPlayed == true)
                     continue;
                 var logLoss = new DbLogLossGame()
                 {
