@@ -9,10 +9,10 @@ namespace LogLoss
 {
     public class LogLossGetter
     {
-        public async Task Main(ILogger logger, string gamesConnectionString)
+        public async Task Main(string gamesConnectionString)
         {
             // Run Data Collection
-            logger.LogInformation("Starting Log Loss Calculation");
+            Console.WriteLine("Starting Log Loss Calculation");
 
             var gameDbContext = new GameDbContext(gamesConnectionString);
             var predictedGameRepo = new PredictedGameRepository(gameDbContext);
@@ -23,7 +23,7 @@ namespace LogLoss
             var gameLogLosses = await logLossCalculator.Calculate(predictedGames);
             await logLossRepo.AddLogLossGames(gameLogLosses);
             
-            logger.LogInformation("Completed Log Loss Calculation");
+            Console.WriteLine("Completed Log Loss Calculation");
         }
     }
 }
