@@ -6,9 +6,11 @@ namespace DataAccess.LogLossRepository
     public class LogLossGameRepository : ILogLossGameRepository
     {
         private readonly GameDbContext _dbContext;
+        private readonly IEnumerable<DbLogLossGame> _cachedLogLossGames;
         public LogLossGameRepository(GameDbContext dbContext)
         {
             _dbContext = dbContext;
+            _cachedLogLossGames = _dbContext.LogLossGame.ToList();
         }
 
         public async Task AddLogLossGames(IEnumerable<DbLogLossGame> games)
@@ -16,9 +18,9 @@ namespace DataAccess.LogLossRepository
             await _dbContext.LogLossGame.AddRangeAsync(games);
             await _dbContext.SaveChangesAsync();
         }
-        public async Task<bool> DoesLogLossExistById(int id)
+        public bool DoesLogLossExistById(int id)
         {
-            var game = await _dbContext.LogLossGame.FirstOrDefaultAsync(i => i.id == id);
+            var game = _cachedLogLossGames.FirstOrDefault(i => i.id == id);
             if (game == null)
                 return false;
             return true;

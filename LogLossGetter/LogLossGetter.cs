@@ -20,7 +20,7 @@ namespace LogLoss
             var logLossCalculator = new LogLossCalculator(logLossRepo);
 
             var predictedGames = await predictedGameRepo.GetAllPredictedGames();
-            var gameLogLosses = await logLossCalculator.Calculate(predictedGames);
+            var gameLogLosses = logLossCalculator.Calculate(predictedGames);
             await logLossRepo.AddLogLossGames(gameLogLosses);
             
             Console.WriteLine("Completed Log Loss Calculation");
