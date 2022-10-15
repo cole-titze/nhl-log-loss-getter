@@ -5,7 +5,7 @@ using DataAccess;
 using Microsoft.Extensions.Logging;
 using DataAccess.LogLossRepository;
 
-namespace LogLoss
+namespace BusinessLogic
 {
     public class LogLossGetter
     {

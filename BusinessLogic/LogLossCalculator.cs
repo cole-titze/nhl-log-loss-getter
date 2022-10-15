@@ -1,7 +1,7 @@
 ﻿using DataAccess.LogLossRepository;
 using Entities.DbModels;
 
-namespace LogLoss
+namespace BusinessLogic
 {
 	public class LogLossCalculator
 	{
