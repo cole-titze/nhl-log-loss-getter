@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using BusinessLogic;
+using BusinessLogic.LogLoss;
+using Entry;
 
 var logLossGetter = new LogLossGetter();
 

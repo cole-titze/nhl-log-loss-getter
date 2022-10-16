@@ -21,6 +21,6 @@ namespace Entities.DbModels
         public double modelHomeOdds { get; set; }
         public double modelAwayOdds { get; set; }
         [ForeignKey("id")]
-        public DbGame game { get; set; }
+        public DbGame game { get; set; } = null!;
     }
 }

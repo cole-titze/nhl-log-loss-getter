@@ -1,7 +1,7 @@
 ﻿using DataAccess.LogLossRepository;
 using Entities.DbModels;
 
-namespace BusinessLogic
+namespace BusinessLogic.LogLoss
 {
 	public class LogLossCalculator
 	{
@@ -15,7 +15,7 @@ namespace BusinessLogic
             // Invalid odds return -1
             if (awayOdds == 0 || homeOdds == 0 || awayOdds == -1 || homeOdds == -1)
                 return -1;
-            return -(((int)winner) * Math.Log(awayOdds) + (1 - ((int)winner)) * Math.Log(1 - homeOdds));
+            return -(((int)winner) * Math.Log(awayOdds) + (1 - ((int)winner)) * Math.Log(homeOdds));
         }
 		public IEnumerable<DbLogLossGame> Calculate(IEnumerable<DbPredictedGame> games)
 		{

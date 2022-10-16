@@ -4,8 +4,9 @@ using DataAccess.PredictedGameRepository;
 using DataAccess;
 using Microsoft.Extensions.Logging;
 using DataAccess.LogLossRepository;
+using BusinessLogic.LogLoss;
 
-namespace BusinessLogic
+namespace Entry
 {
     public class LogLossGetter
     {
@@ -21,8 +22,8 @@ namespace BusinessLogic
 
             var predictedGames = await predictedGameRepo.GetAllPredictedGames();
             var gameLogLosses = logLossCalculator.Calculate(predictedGames);
-            await logLossRepo.AddLogLossGames(gameLogLosses);
-            
+            await logLossRepo.AddUpdateLogLossGames(gameLogLosses);
+
             Console.WriteLine("Completed Log Loss Calculation");
         }
     }
