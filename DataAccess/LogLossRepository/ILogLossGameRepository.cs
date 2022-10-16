@@ -5,7 +5,7 @@ namespace DataAccess.LogLossRepository
 {
 	public interface ILogLossGameRepository
 	{
-        Task AddLogLossGames(IEnumerable<DbLogLossGame> games);
+        Task AddUpdateLogLossGames(IEnumerable<DbLogLossGame> games);
         bool DoesLogLossExistById(int id);
     }
 }

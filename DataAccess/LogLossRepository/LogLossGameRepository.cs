@@ -12,10 +12,25 @@ namespace DataAccess.LogLossRepository
             _dbContext = dbContext;
             _cachedLogLossGames = _dbContext.LogLossGame.ToList();
         }
-
-        public async Task AddLogLossGames(IEnumerable<DbLogLossGame> games)
+        public async Task AddUpdateLogLossGames(IEnumerable<DbLogLossGame> games)
         {
-            await _dbContext.LogLossGame.AddRangeAsync(games);
+            var addList = new List<DbLogLossGame>();
+            var updateList = new List<DbLogLossGame>();
+            foreach (var game in games)
+            {
+                var dbGame = _cachedLogLossGames.FirstOrDefault(i => i.id == game.id);
+                if (dbGame == null)
+                {
+                    addList.Add(game);
+                }
+                else
+                {
+                    dbGame.Clone(game);
+                    updateList.Add(dbGame);
+                }
+            }
+            await _dbContext.LogLossGame.AddRangeAsync(addList);
+            _dbContext.LogLossGame.UpdateRange(updateList);
             await _dbContext.SaveChangesAsync();
         }
         public bool DoesLogLossExistById(int id)
