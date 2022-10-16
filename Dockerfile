@@ -4,7 +4,7 @@ WORKDIR /logloss
 
 # Build app
 COPY . ./
-RUN dotnet publish nhl-logloss-getter --self-contained -r linux-musl-arm64 -p:PublishSingleFile=true -c Release -o ./deploy
+RUN dotnet publish nhl-log-loss-getter --self-contained -r linux-musl-arm64 -p:PublishSingleFile=true -c Release -o ./deploy
 
 # Generate image
 FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-alpine-arm64v8
