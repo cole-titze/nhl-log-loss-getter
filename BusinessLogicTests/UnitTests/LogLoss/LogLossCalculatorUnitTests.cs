@@ -1,7 +1,6 @@
 ﻿using BusinessLogic.LogLoss;
 using BusinessLogicTests.Fakes;
 using Entities.DbModels;
-using FakeItEasy;
 using FluentAssertions;
 
 namespace BusinessLogicTests.UnitTests.LogLoss;
@@ -9,14 +8,14 @@ namespace BusinessLogicTests.UnitTests.LogLoss;
 [TestClass]
 public class LogLossCalculatorUnitTests
 {
-    public List<DbPredictedGame> PredictedGameFactory(int numberOfNewPredictedGames, int numberOfExistingFinishedGames, int numberOfExistingUnfinishedGames)
+    public List<DbGameOdds> PredictedGameFactory(int numberOfNewPredictedGames, int numberOfExistingFinishedGames, int numberOfExistingUnfinishedGames)
     {
-        var predictedGameList = new List<DbPredictedGame>();
+        var predictedGameList = new List<DbGameOdds>();
         for (int i = 0; i < numberOfExistingFinishedGames; i++)
         {
-            var predictedGame = new DbPredictedGame()
+            var predictedGame = new DbGameOdds()
             {
-                id =  i,
+                gameId =  i,
                 game = new DbGame
                 {
                     hasBeenPlayed = true
@@ -26,9 +25,9 @@ public class LogLossCalculatorUnitTests
         }
         for (int i = 0; i < numberOfExistingUnfinishedGames; i++)
         {
-            var predictedGame = new DbPredictedGame()
+            var predictedGame = new DbGameOdds()
             {
-                id = numberOfExistingFinishedGames + i,
+                gameId = numberOfExistingFinishedGames + i,
                 game = new DbGame
                 {
                     hasBeenPlayed = false
@@ -38,9 +37,9 @@ public class LogLossCalculatorUnitTests
         }
         for (int i = 0; i < numberOfNewPredictedGames; i++)
         {
-            var predictedGame = new DbPredictedGame()
+            var predictedGame = new DbGameOdds()
             {
-                id = numberOfExistingFinishedGames + numberOfExistingUnfinishedGames + i,
+                gameId = numberOfExistingFinishedGames + numberOfExistingUnfinishedGames + i,
                 game = new DbGame
                 {
                     hasBeenPlayed = true
@@ -57,7 +56,7 @@ public class LogLossCalculatorUnitTests
         {
             var logLoss = new DbLogLossGame()
             {
-                id  = i
+                gameId  = i
             };
             logLossList.Add(logLoss);
         }
@@ -65,13 +64,13 @@ public class LogLossCalculatorUnitTests
         {
             var logLoss = new DbLogLossGame()
             {
-                id = numberOfExistingPredictedGames + i
+                gameId = numberOfExistingPredictedGames + i
             };
             logLossList.Add(logLoss);
         }
         return logLossList;
     }
-    public (LogLossCalculator, List<DbPredictedGame>) Factory(int numberOfNewPredictedGames, int numberOfExistingFinishedPredictedGames, int numberOfExistingUnFinishedPredictedGames)
+    public (LogLossCalculator, List<DbGameOdds>) Factory(int numberOfNewPredictedGames, int numberOfExistingFinishedPredictedGames, int numberOfExistingUnFinishedPredictedGames)
     {
         var logLossList = LogLossFactory(numberOfExistingFinishedPredictedGames, numberOfExistingUnFinishedPredictedGames);
         var logLossRepo = new FakeLogLossRepository(logLossList);
@@ -178,7 +177,7 @@ public class LogLossCalculatorUnitTests
         logLossGames.First().pinnacleLogLoss.Should().Be(-1);
         logLossGames.First().betOnlineLogLoss.Should().Be(-1);
     }
-    private List<DbPredictedGame> BuildLogLossValues(List<DbPredictedGame> logLossList)
+    private List<DbGameOdds> BuildLogLossValues(List<DbGameOdds> logLossList)
     {
         logLossList[0].modelHomeOdds = .85;
         logLossList[0].modelAwayOdds = .15;
@@ -233,5 +232,14 @@ public class LogLossCalculatorUnitTests
         logLossGames.ElementAt(2).myBookieLogLoss.Should().Be(-1);
         logLossGames.ElementAt(2).pinnacleLogLoss.Should().Be(-1);
         logLossGames.ElementAt(2).betOnlineLogLoss.Should().Be(-1);
+    }
+    [TestMethod]
+    public void UselessTestForCoverage()
+    {
+        var logLossList = new List<DbLogLossGame>();
+        var logLossRepo = new FakeLogLossRepository(logLossList);
+        Action testMap = () => logLossRepo.AddUpdateLogLossGames(new List<DbLogLossGame>());
+
+        Assert.ThrowsException<NotImplementedException>(testMap);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using DataAccess.LogLossRepository;
+﻿using DataAccess.LogLossRepository;
 using Entities.DbModels;
 
 namespace BusinessLogicTests.Fakes
@@ -19,7 +18,7 @@ namespace BusinessLogicTests.Fakes
 
         public bool DoesLogLossExistById(int id)
         {
-            var game = _logLosses.Where(i => i.id == id).FirstOrDefault();
+            var game = _logLosses.Where(i => i.gameId == id).FirstOrDefault();
             if (game == null)
                 return false;
             return true;

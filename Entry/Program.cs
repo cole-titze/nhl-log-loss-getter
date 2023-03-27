@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using BusinessLogic.LogLoss;
 using Entry;
 
 var logLossGetter = new LogLossGetter();
@@ -17,7 +16,7 @@ using (var scope = sp.CreateScope())
     if (gamesConnectionString == null)
     {
         var config = new ConfigurationBuilder().AddJsonFile("appsettings.Local.json").Build();
-        gamesConnectionString = config.GetConnectionString("GAMES_DATABASE");
+        gamesConnectionString = config.GetConnectionString("NHL_DATABASE");
     }
     if (gamesConnectionString == null)
         throw new Exception("Connection String Null");

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace Entities.DbModels
 {
     public class DbLogLossGame
     {
-        public int id { get; set; }
+        [Key]
+        public int gameId { get; set; }
         public double bovadaLogLoss { get; set; }
         public double myBookieLogLoss { get; set; }
         public double pinnacleLogLoss { get; set; }
@@ -13,7 +15,7 @@ namespace Entities.DbModels
 
         public void Clone(DbLogLossGame game)
         {
-            id = game.id;
+            gameId = game.gameId;
             bovadaLogLoss = game.bovadaLogLoss;
             myBookieLogLoss = game.myBookieLogLoss;
             pinnacleLogLoss = game.pinnacleLogLoss;

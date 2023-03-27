@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using DataAccess.PredictedGameRepository;
+﻿using DataAccess.PredictedGameRepository;
 using DataAccess;
-using Microsoft.Extensions.Logging;
 using DataAccess.LogLossRepository;
 using BusinessLogic.LogLoss;
 

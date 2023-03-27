@@ -17,16 +17,16 @@ namespace BusinessLogic.LogLoss
                 return -1;
             return -(((int)winner) * Math.Log(awayOdds) + (1 - ((int)winner)) * Math.Log(homeOdds));
         }
-		public IEnumerable<DbLogLossGame> Calculate(IEnumerable<DbPredictedGame> games)
+		public IEnumerable<DbLogLossGame> Calculate(IEnumerable<DbGameOdds> games)
 		{
             var logLosses = new List<DbLogLossGame>();
             foreach(var game in games)
             {
-                if (_logLossGameRepository.DoesLogLossExistById(game.id) && game.game.hasBeenPlayed == true)
+                if (_logLossGameRepository.DoesLogLossExistById(game.gameId) && game.game.hasBeenPlayed == true)
                     continue;
                 var logLoss = new DbLogLossGame()
                 {
-                    id = game.id,
+                    gameId = game.gameId,
                     modelLogLoss = CalculateLogLoss(game.modelHomeOdds, game.modelAwayOdds, game.game.winner),
                     bovadaLogLoss = CalculateLogLoss(game.bovadaOpeningVegasHomeOdds, game.bovadaOpeningVegasAwayOdds, game.game.winner),
                     myBookieLogLoss = CalculateLogLoss(game.myBookieOpeningVegasHomeOdds, game.myBookieOpeningVegasAwayOdds, game.game.winner),

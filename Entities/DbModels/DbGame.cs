@@ -1,5 +1,4 @@
-﻿using System;
-namespace Entities.DbModels
+﻿namespace Entities.DbModels
 {
     public class DbGame
     {

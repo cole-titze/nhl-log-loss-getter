@@ -1,5 +1,4 @@
 ﻿using Entities.DbModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.LogLossRepository
 {
@@ -18,7 +17,7 @@ namespace DataAccess.LogLossRepository
             var updateList = new List<DbLogLossGame>();
             foreach (var game in games)
             {
-                var dbGame = _cachedLogLossGames.FirstOrDefault(i => i.id == game.id);
+                var dbGame = _cachedLogLossGames.FirstOrDefault(i => i.gameId == game.gameId);
                 if (dbGame == null)
                 {
                     addList.Add(game);
@@ -35,7 +34,7 @@ namespace DataAccess.LogLossRepository
         }
         public bool DoesLogLossExistById(int id)
         {
-            var game = _cachedLogLossGames.FirstOrDefault(i => i.id == id);
+            var game = _cachedLogLossGames.FirstOrDefault(i => i.gameId == id);
             if (game == null)
                 return false;
             return true;

@@ -1,10 +1,9 @@
-﻿using System;
-using Entities.DbModels;
+﻿using Entities.DbModels;
 
 namespace DataAccess.PredictedGameRepository
 {
-	public interface IPredictedGameRepository
+    public interface IPredictedGameRepository
 	{
-		Task<IEnumerable<DbPredictedGame>> GetAllPredictedGames();
+		Task<IEnumerable<DbGameOdds>> GetAllPredictedGames();
 	}
 }

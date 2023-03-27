@@ -11,9 +11,9 @@ namespace DataAccess.PredictedGameRepository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<DbPredictedGame>> GetAllPredictedGames()
+        public async Task<IEnumerable<DbGameOdds>> GetAllPredictedGames()
         {
-            return await _dbContext.PredictedGame.Include(x => x.game).ToListAsync();
+            return await _dbContext.GameOdds.Include(x => x.game).ToListAsync();
         }
     }
 }

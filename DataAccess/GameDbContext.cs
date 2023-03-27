@@ -10,7 +10,7 @@ namespace DataAccess
         {
             _connectionString = connectionString;
         }
-        public virtual DbSet<DbPredictedGame> PredictedGame { get; set; } = null!;
+        public virtual DbSet<DbGameOdds> GameOdds { get; set; } = null!;
         public virtual DbSet<DbGame> Game { get; set; } = null!;
         public virtual DbSet<DbLogLossGame> LogLossGame { get; set; } = null!;
 
