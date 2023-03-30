@@ -3,6 +3,9 @@ using Entities.DbModels;
 
 namespace BusinessLogic.LogLoss
 {
+    /// <summary>
+    /// Business Logic for calculating log losses for games
+    /// </summary>
 	public class LogLossCalculator
 	{
         private readonly ILogLossGameRepository _logLossGameRepository;
@@ -10,6 +13,13 @@ namespace BusinessLogic.LogLoss
         {
             _logLossGameRepository = logLossGameRepository;
         }
+        /// <summary>
+        /// Given the home and away odds, calculate the log loss of the game
+        /// </summary>
+        /// <param name="homeOdds">Decimal percent of home team winning</param>
+        /// <param name="awayOdds">Decimal percent of away team winning</param>
+        /// <param name="winner">The winner of the game</param>
+        /// <returns>The log loss of the game</returns>
         private double CalculateLogLoss(double homeOdds, double awayOdds, TEAM winner)
         {
             // Invalid odds return -1
@@ -17,6 +27,11 @@ namespace BusinessLogic.LogLoss
                 return -1;
             return -(((int)winner) * Math.Log(awayOdds) + (1 - ((int)winner)) * Math.Log(homeOdds));
         }
+        /// <summary>
+        /// Given a list of games and their odds, calculates the log loss for each game and model
+        /// </summary>
+        /// <param name="games">The game and odds for each team and each model</param>
+        /// <returns>A list of calculated log losses</returns>
 		public IEnumerable<DbLogLossGame> Calculate(IEnumerable<DbGameOdds> games)
 		{
             var logLosses = new List<DbLogLossGame>();
