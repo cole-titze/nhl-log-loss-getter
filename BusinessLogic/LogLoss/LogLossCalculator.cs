@@ -1,5 +1,6 @@
 ﻿using DataAccess.LogLossRepository;
 using Entities.DbModels;
+using Microsoft.Extensions.Logging;
 
 namespace BusinessLogic.LogLoss
 {
@@ -8,10 +9,14 @@ namespace BusinessLogic.LogLoss
     /// </summary>
 	public class LogLossCalculator
 	{
+        private readonly ILogger<LogLossCalculator> _logger;
+        private readonly ILoggerFactory _loggerFactory;
         private readonly ILogLossGameRepository _logLossGameRepository;
-        public LogLossCalculator(ILogLossGameRepository logLossGameRepository)
+        public LogLossCalculator(ILogLossGameRepository logLossGameRepository, ILoggerFactory loggerFactory)
         {
             _logLossGameRepository = logLossGameRepository;
+            _loggerFactory = loggerFactory;
+            _logger = loggerFactory.CreateLogger<LogLossCalculator>();
         }
         /// <summary>
         /// Given the home and away odds, calculate the log loss of the game
@@ -51,6 +56,8 @@ namespace BusinessLogic.LogLoss
                 };
                 logLosses.Add(logLoss);
             }
+            _logger.LogInformation("Number of Game's Log Losses calculated: " + logLosses.Count.ToString());
+
             return logLosses;
         }
 	}

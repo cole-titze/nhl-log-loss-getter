@@ -1,12 +1,18 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Entry;
 
-var logLossGetter = new LogLossGetter();
+ServiceProvider sp = new ServiceCollection()
+    .AddLogging((loggingBuilder) => loggingBuilder
+        .SetMinimumLevel(LogLevel.Trace)
+        .AddConsole()
+        )
+    .BuildServiceProvider();
 
-// Build service collection
-var collection = new ServiceCollection();
-var sp = collection.BuildServiceProvider();
+var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
+
+var logLossGetter = new LogLossGetter(loggerFactory);
 
 // Get logger and run main
 using (var scope = sp.CreateScope())
