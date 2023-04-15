@@ -1,7 +1,9 @@
 ﻿using BusinessLogic.LogLoss;
 using BusinessLogicTests.Fakes;
 using Entities.DbModels;
+using FakeItEasy;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 
 namespace BusinessLogicTests.UnitTests.LogLoss;
 
@@ -75,7 +77,7 @@ public class LogLossCalculatorUnitTests
         var logLossList = LogLossFactory(numberOfExistingFinishedPredictedGames, numberOfExistingUnFinishedPredictedGames);
         var logLossRepo = new FakeLogLossRepository(logLossList);
 
-        var cut = new LogLossCalculator(logLossRepo);
+        var cut = new LogLossCalculator(logLossRepo, A.Fake<ILoggerFactory>());
         var predictedGameList = PredictedGameFactory(numberOfNewPredictedGames, numberOfExistingFinishedPredictedGames, numberOfExistingUnFinishedPredictedGames);
 
         return (cut, predictedGameList);
@@ -206,7 +208,7 @@ public class LogLossCalculatorUnitTests
         int numberOfExistingUpcomingPredictedGames = 0;
         var logLossList = new List<DbLogLossGame>();
         var logLossRepo = new FakeLogLossRepository(logLossList);
-        var cut = new LogLossCalculator(logLossRepo);
+        var cut = new LogLossCalculator(logLossRepo, A.Fake<ILoggerFactory>());
         var predictedGameList = PredictedGameFactory(numberOfNewPredictedGames, numberOfExistingFinishedPredictedGames, numberOfExistingUpcomingPredictedGames);
         predictedGameList = BuildLogLossValues(predictedGameList);
 
