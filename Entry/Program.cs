@@ -17,7 +17,7 @@ var logLossGetter = new LogLossGetter(loggerFactory);
 // Get logger and run main
 using (var scope = sp.CreateScope())
 {
-    string? gamesConnectionString = Environment.GetEnvironmentVariable("GAMES_DATABASE");
+    string? gamesConnectionString = Environment.GetEnvironmentVariable("NHL_DATABASE");
 
     if (gamesConnectionString == null)
     {
