@@ -4,6 +4,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/cole-titze/nhl-log-loss-getter/build.yml?label=Build)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/cole-titze/nhl-log-loss-getter/test.yml?label=Tests)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/cole-titze/nhl-log-loss-getter/docker-publish.yml?label=Docker%20Publish)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/cole-titze/nhl-log-loss-getter?label=Dependencies)
 \
 ![cod cov](https://nhlblobstorage.blob.core.windows.net/repobadges/nhlLogLossBusinessLogicBadge.svg)
 ![cod cov](https://nhlblobstorage.blob.core.windows.net/repobadges/nhlLogLossEntitiesBadge.svg)
