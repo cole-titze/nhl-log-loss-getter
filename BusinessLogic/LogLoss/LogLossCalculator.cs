@@ -10,12 +10,10 @@ namespace BusinessLogic.LogLoss
 	public class LogLossCalculator
 	{
         private readonly ILogger<LogLossCalculator> _logger;
-        private readonly ILoggerFactory _loggerFactory;
         private readonly ILogLossGameRepository _logLossGameRepository;
         public LogLossCalculator(ILogLossGameRepository logLossGameRepository, ILoggerFactory loggerFactory)
         {
             _logLossGameRepository = logLossGameRepository;
-            _loggerFactory = loggerFactory;
             _logger = loggerFactory.CreateLogger<LogLossCalculator>();
         }
         /// <summary>

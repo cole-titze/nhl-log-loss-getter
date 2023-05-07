@@ -23,7 +23,7 @@ namespace Entry
             var watch = Stopwatch.StartNew();
             Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
 
-            _logger.LogTrace("Starting Game Cleaning");
+            _logger.LogTrace("Starting Log Loss Calculations");
             var gameDbContext = new GameDbContext(gamesConnectionString);
             var predictedGameRepo = new PredictedGameRepository(gameDbContext);
             var logLossRepo = new LogLossGameRepository(gameDbContext);
@@ -36,7 +36,7 @@ namespace Entry
             watch.Stop();
             var elapsedTime = watch.Elapsed;
             var minutes = elapsedTime.TotalMinutes.ToString();
-            _logger.LogTrace("Completed Game Cleaner in " + minutes + " minutes");
+            _logger.LogTrace("Completed Log Loss Calculations in " + minutes + " minutes");
         }
     }
 }
