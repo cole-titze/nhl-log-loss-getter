@@ -40,8 +40,6 @@ namespace BusinessLogic.LogLoss
             var logLosses = new List<DbLogLossGame>();
             foreach(var game in games)
             {
-                if (_logLossGameRepository.DoesLogLossExistById(game.gameId) && game.game.hasBeenPlayed == true)
-                    continue;
                 var logLoss = new DbLogLossGame()
                 {
                     gameId = game.gameId,
