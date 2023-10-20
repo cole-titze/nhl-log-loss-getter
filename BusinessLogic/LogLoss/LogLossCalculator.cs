@@ -44,11 +44,9 @@ namespace BusinessLogic.LogLoss
                 {
                     gameId = game.gameId,
                     modelLogLoss = CalculateLogLoss(game.modelHomeOdds, game.modelAwayOdds, game.game.winner),
-                    bovadaLogLoss = CalculateLogLoss(game.bovadaOpeningVegasHomeOdds, game.bovadaOpeningVegasAwayOdds, game.game.winner),
-                    myBookieLogLoss = CalculateLogLoss(game.myBookieOpeningVegasHomeOdds, game.myBookieOpeningVegasAwayOdds, game.game.winner),
-                    pinnacleLogLoss = CalculateLogLoss(game.pinnacleOpeningVegasHomeOdds, game.pinnacleOpeningVegasAwayOdds, game.game.winner),
-                    betOnlineLogLoss = CalculateLogLoss(game.betOnlineOpeningVegasHomeOdds, game.betOnlineOpeningVegasAwayOdds, game.game.winner),
-                    bet365LogLoss = CalculateLogLoss(game.bet365OpeningVegasHomeOdds, game.bet365OpeningVegasAwayOdds, game.game.winner)
+                    myBookieLogLoss = CalculateLogLoss(game.myBookieHomeOdds, game.myBookieAwayOdds, game.game.winner),
+                    draftKingsLogLoss = CalculateLogLoss(game.draftKingsHomeOdds, game.draftKingsAwayOdds, game.game.winner),
+                    betMgmLogLoss = CalculateLogLoss(game.betMgmHomeOdds, game.betMgmAwayOdds, game.game.winner),
                 };
                 logLosses.Add(logLoss);
             }
