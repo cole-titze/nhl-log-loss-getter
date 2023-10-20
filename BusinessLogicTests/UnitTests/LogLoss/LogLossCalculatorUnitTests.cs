@@ -95,12 +95,12 @@ public class LogLossCalculatorUnitTests
         logLossGames.Should().HaveCount(numberOfNewPredictedGames);
     }
     [TestMethod]
-    public void ACallToCalculate_WithFiveGamesAlreadyRecordedAndFinished_ShouldGetNoGames()
+    public void ACallToCalculate_WithFiveGamesAlreadyRecordedAndFinished_ShouldGetFiveGames()
     {
         int numberOfNewPredictedGames = 0;
         int numberOfExistingFinishedPredictedGames = 5;
         int numberOfExistingUpcomingPredictedGames = 0;
-        int numberOfGamesToUpdate = numberOfNewPredictedGames + numberOfExistingUpcomingPredictedGames;
+        int numberOfGamesToUpdate = numberOfNewPredictedGames + numberOfExistingUpcomingPredictedGames + numberOfExistingFinishedPredictedGames;
         var (cut, predictedGameList) = Factory(numberOfNewPredictedGames, numberOfExistingFinishedPredictedGames, numberOfExistingUpcomingPredictedGames);
 
 
@@ -114,7 +114,7 @@ public class LogLossCalculatorUnitTests
         int numberOfNewPredictedGames = 10;
         int numberOfExistingFinishedPredictedGames = 5;
         int numberOfExistingUpcomingPredictedGames = 0;
-        int numberOfGamesToUpdate = numberOfNewPredictedGames + numberOfExistingUpcomingPredictedGames;
+        int numberOfGamesToUpdate = numberOfNewPredictedGames + numberOfExistingUpcomingPredictedGames + numberOfExistingFinishedPredictedGames;
         var (cut, predictedGameList) = Factory(numberOfNewPredictedGames, numberOfExistingFinishedPredictedGames, numberOfExistingUpcomingPredictedGames);
 
 
