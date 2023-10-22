@@ -172,31 +172,30 @@ public class LogLossCalculatorUnitTests
 
         var logLossGames = cut.Calculate(predictedGameList);
 
-        logLossGames.First().bet365LogLoss.Should().Be(-1);
+        logLossGames.First().barstoolLogLoss.Should().Be(-1);
         logLossGames.First().modelLogLoss.Should().Be(-1);
         logLossGames.First().bovadaLogLoss.Should().Be(-1);
-        logLossGames.First().myBookieLogLoss.Should().Be(-1);
-        logLossGames.First().pinnacleLogLoss.Should().Be(-1);
-        logLossGames.First().betOnlineLogLoss.Should().Be(-1);
+        logLossGames.First().betMgmLogLoss.Should().Be(-1);
+        logLossGames.First().draftKingsLogLoss.Should().Be(-1);
     }
     private List<DbGameOdds> BuildLogLossValues(List<DbGameOdds> logLossList)
     {
         logLossList[0].modelHomeOdds = .85;
         logLossList[0].modelAwayOdds = .15;
-        logLossList[0].bovadaOpeningVegasHomeOdds = .73;
-        logLossList[0].bovadaOpeningVegasAwayOdds = .45;
+        logLossList[0].bovadaHomeOdds = .73;
+        logLossList[0].bovadaAwayOdds = .45;
         logLossList[0].game.winner = TEAM.home;
 
         logLossList[1].modelHomeOdds = .845;
         logLossList[1].modelAwayOdds = .155;
-        logLossList[1].bovadaOpeningVegasHomeOdds = .77;
-        logLossList[1].bovadaOpeningVegasAwayOdds = .43;
+        logLossList[1].bovadaHomeOdds = .77;
+        logLossList[1].bovadaAwayOdds = .43;
         logLossList[1].game.winner = TEAM.away;
 
         logLossList[2].modelHomeOdds = .45;
         logLossList[2].modelAwayOdds = .55;
-        logLossList[2].bovadaOpeningVegasHomeOdds = .45;
-        logLossList[2].bovadaOpeningVegasAwayOdds = .65;
+        logLossList[2].bovadaHomeOdds = .45;
+        logLossList[2].bovadaAwayOdds = .65;
         logLossList[2].game.winner = TEAM.away;
         return logLossList;
     }
@@ -214,26 +213,23 @@ public class LogLossCalculatorUnitTests
 
         var logLossGames = cut.Calculate(predictedGameList);
 
-        logLossGames.ElementAt(0).bet365LogLoss.Should().Be(-1);
+        logLossGames.ElementAt(0).barstoolLogLoss.Should().Be(-1);
         Math.Round(logLossGames.ElementAt(0).modelLogLoss, 4).Should().Be(.1625);
         Math.Round(logLossGames.ElementAt(0).bovadaLogLoss, 4).Should().Be(.3147);
-        logLossGames.ElementAt(0).myBookieLogLoss.Should().Be(-1);
-        logLossGames.ElementAt(0).pinnacleLogLoss.Should().Be(-1);
-        logLossGames.ElementAt(0).betOnlineLogLoss.Should().Be(-1);
+        logLossGames.ElementAt(0).betMgmLogLoss.Should().Be(-1);
+        logLossGames.ElementAt(0).draftKingsLogLoss.Should().Be(-1);
 
-        logLossGames.ElementAt(1).bet365LogLoss.Should().Be(-1);
+        logLossGames.ElementAt(1).barstoolLogLoss.Should().Be(-1);
         Math.Round(logLossGames.ElementAt(1).modelLogLoss, 4).Should().Be(1.8643);
         Math.Round(logLossGames.ElementAt(1).bovadaLogLoss, 4).Should().Be(.8440);
-        logLossGames.ElementAt(1).myBookieLogLoss.Should().Be(-1);
-        logLossGames.ElementAt(1).pinnacleLogLoss.Should().Be(-1);
-        logLossGames.ElementAt(1).betOnlineLogLoss.Should().Be(-1);
+        logLossGames.ElementAt(1).betMgmLogLoss.Should().Be(-1);
+        logLossGames.ElementAt(1).draftKingsLogLoss.Should().Be(-1);
 
-        logLossGames.ElementAt(2).bet365LogLoss.Should().Be(-1);
+        logLossGames.ElementAt(2).barstoolLogLoss.Should().Be(-1);
         Math.Round(logLossGames.ElementAt(2).modelLogLoss, 4).Should().Be(.5978);
         Math.Round(logLossGames.ElementAt(2).bovadaLogLoss, 4).Should().Be(.4308);
-        logLossGames.ElementAt(2).myBookieLogLoss.Should().Be(-1);
-        logLossGames.ElementAt(2).pinnacleLogLoss.Should().Be(-1);
-        logLossGames.ElementAt(2).betOnlineLogLoss.Should().Be(-1);
+        logLossGames.ElementAt(2).betMgmLogLoss.Should().Be(-1);
+        logLossGames.ElementAt(2).draftKingsLogLoss.Should().Be(-1);
     }
     [TestMethod]
     public void UselessTestForCoverage()

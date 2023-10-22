@@ -13,10 +13,9 @@ namespace EntitiesTests.UnitTests
             {
                 gameId = 3,
                 bovadaLogLoss = 1,
-                myBookieLogLoss = 2,
-                pinnacleLogLoss = 1.2,
-                betOnlineLogLoss = .98,
-                bet365LogLoss = .65,
+                draftKingsLogLoss = 1.2,
+                barstoolLogLoss = .98,
+                betMgmLogLoss = .65,
                 modelLogLoss = .54323322,
             };
 
@@ -25,10 +24,9 @@ namespace EntitiesTests.UnitTests
 
             clonedGame.gameId.Should().Be(logLossGame.gameId);
             clonedGame.bovadaLogLoss.Should().Be(logLossGame.bovadaLogLoss);
-            clonedGame.myBookieLogLoss.Should().Be(logLossGame.myBookieLogLoss);
-            clonedGame.pinnacleLogLoss.Should().Be(logLossGame.pinnacleLogLoss);
-            clonedGame.betOnlineLogLoss.Should().Be(logLossGame.betOnlineLogLoss);
-            clonedGame.bet365LogLoss.Should().Be(logLossGame.bet365LogLoss);
+            clonedGame.barstoolLogLoss.Should().Be(logLossGame.barstoolLogLoss);
+            clonedGame.draftKingsLogLoss.Should().Be(logLossGame.draftKingsLogLoss);
+            clonedGame.betMgmLogLoss.Should().Be(logLossGame.betMgmLogLoss);
             clonedGame.modelLogLoss.Should().Be(logLossGame.modelLogLoss);
         }
     }
