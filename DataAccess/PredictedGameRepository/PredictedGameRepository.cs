@@ -19,7 +19,7 @@ namespace DataAccess.PredictedGameRepository
         /// <returns>All predicted games in the database</returns>
         public async Task<IEnumerable<DbGameOdds>> GetAllPredictedGames()
         {
-            return await _dbContext.GameOdds.Include(x => x.game).ToListAsync();
+            return await _dbContext.GameOdds.Include(x => x.game).Where(x => x.game.hasBeenPlayed == true).ToListAsync();
         }
     }
 }
